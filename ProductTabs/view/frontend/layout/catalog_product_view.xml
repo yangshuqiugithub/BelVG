@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ ********************************************************************
+ * @category   BelVG
+ * @package    BelVG_ProductTabs
+ * @copyright  Copyright (c) BelVG LLC. (http://www.belvg.com)
+ * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info.details" destination="belvg.product.tabs"/>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="belvg.product.tabs" template="BelVG_ProductTabs::container.phtml" after="product.info.media">
+                <block class="BelVG\ProductTabs\Block\Tabs" name="product.info.tabs" as="product.info.tabs"
+                       template="BelVG_ProductTabs::tabs.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

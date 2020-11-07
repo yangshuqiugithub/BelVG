@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ ********************************************************************
+ * @category   BelVG
+ * @package    BelVG_ProductTabs
+ * @copyright  Copyright (c) BelVG LLC. (http://www.belvg.com)
+ * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="BelVG\ProductTabs\Ui\DataProvider\Tab\Form\TabDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">BelVG\ProductTabs\Ui\DataProvider\Tab\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="BelVG\ProductTabs\Ui\DataProvider\Tab\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="system" xsi:type="array">
+                    <item name="class" xsi:type="string">BelVG\ProductTabs\Ui\DataProvider\Tab\Form\Modifier\System</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+                <item name="excluded_products" xsi:type="array">
+                    <item name="class" xsi:type="string">BelVG\ProductTabs\Ui\DataProvider\Tab\Form\Modifier\ExcludedProducts</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="product_tab_fieldset" xsi:type="array">
+                    <item name="class" xsi:type="string">BelVG\ProductTabs\Ui\DataProvider\Product\Form\Modifier\TabFieldSet</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+</config>

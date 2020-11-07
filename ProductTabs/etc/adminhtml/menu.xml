@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ ********************************************************************
+ * @category   BelVG
+ * @package    BelVG_ProductTabs
+ * @copyright  Copyright (c) BelVG LLC. (http://www.belvg.com)
+ * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BelVG_ProductTabs::product_section" title="Products" translate="title" module="BelVG_ProductTabs"
+             sortOrder="100" parent="Magento_Catalog::catalog" resource="BelVG_ProductTabs::tab_management"/>
+
+        <add id="BelVG_ProductTabs::tab_management" title="Tab Management" module="BelVG_ProductTabs"
+             resource="BelVG_ProductTabs::tab_management"
+             action="belvg_product_tabs/index/grid" dependsOnModule="Magento_Catalog" sortOrder="110"
+             parent="BelVG_ProductTabs::product_section"
+        />
+
+    </menu>
+</config>
+

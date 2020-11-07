@@ -1,0 +1,21 @@
+<div if="$col.isVisible($row())">
+    <div class="action-select-wrap" collapsible>
+        <button class="action-select" translate="'Select'" toggleCollapsible/>
+        <ul class="action-menu" css="_active: $collapsible.opened">
+            <li>
+                <a
+                        class="action-menu-item"
+                        click="$col.initTabModal.bind(this, $row()._rowIndex)"
+                        text="$col.getEditText()"
+                        attr=""/>
+            </li>
+            <li>
+                <a
+                        class="action-menu-item"
+                        click="$col.deleteTab.bind(this, $row()._rowIndex)"
+                        text="$col.getDeleteText()"
+                        attr=""/>
+            </li>
+        </ul>
+    </div>
+</div>

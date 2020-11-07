@@ -1,0 +1,66 @@
+<?php
+/**
+ * BelVG LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ *
+ ********************************************************************
+ * @category   BelVG
+ * @package    BelVG_ProductTabs
+ * @copyright  Copyright (c) BelVG LLC. (http://www.belvg.com)
+ * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ */
+/** @var \BelVG\ProductTabs\Block\Tabs $block */
+
+$tabs = [];
+foreach ($block->getTabs() as $tab) {
+    if (!($tab['content'] = $block->getChildHtml($tab['alias']))
+        || $block->isEmptyContent($tab['content'])) {
+        continue;
+    }
+    $tabs[] = $tab;
+}
+
+$displayType = $block->getDisplayType();
+
+$mageInitConfig = [
+    $displayType => [
+        'openedState' => 'active',
+    ]
+];
+
+if ($block->isOpenAll()) {
+    $mageInitConfig[$displayType]['multipleCollapsible'] = true;
+    $mageInitConfig[$displayType]['active'] = array_keys($tabs);
+}
+?>
+
+<div class="product info detailed">
+    <div class="product-<?= $displayType ?> data items"
+         data-mage-init='<?= \Magento\Framework\Serialize\JsonConverter::convert($mageInitConfig); ?>'>
+        <?php foreach ($tabs as $index => $tab) : ?>
+            <?php
+            $content = $tab['content'];
+            $alias = $tab['alias'];
+            $label = $tab['title'];
+            ?>
+            <div class="data item title"
+                 aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                 data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */$alias ?>">
+                <a class="data switch" tabindex="-1" data-toggle="switch" href="#<?= /* @escapeNotVerified */ $alias ?>"
+                   id="tab-label-<?= /* @escapeNotVerified */$alias ?>-title">
+                    <?= /* @escapeNotVerified */ $label ?>
+                </a>
+            </div>
+            <div class="data item content" id="<?= /* @escapeNotVerified */$alias ?>" data-role="content">
+                <?= /* @escapeNotVerified */$content ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+

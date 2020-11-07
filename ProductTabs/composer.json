@@ -1,0 +1,22 @@
+{
+  "name": "belvg/module-product-tabs",
+  "description": "Magento 2 Product Tabs",
+  "type": "magento2-module",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "email": "store@belvg.com",
+      "name": "BelVG LLC"
+    }
+  ],
+  "version": "2.0.0",
+  "require": {},
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "BelVG\\ProductTabs\\": ""
+    }
+  }
+}
